@@ -14,6 +14,7 @@ Major refactorings done:
 8. Usage of memoized methods to avoided reapeated queries
 9. Usage of shorthand notations wherever possible
 10. Also added specs for controllers 
+11. Added rescues in jobs to know prevent runtime errors 
 
 
 To run the project clone the repo and use `bundle install` to install all the gems and use `rails s -p 3010` to start the server in port 3010 !
