@@ -18,7 +18,7 @@ class Person < ApplicationRecord
     self.team = team
     self.handle = "#{Person.teams.key(team).camelize}#{total_people}"
     save!
-    Emails.validate_email(self).deliver_later(wait_until: 2.seconds.from_now)
-    Emails.admin_new_user(self).deliver_later(wait_until: 4.seconds.from_now)
+    # Emails.validate_email(self).deliver_later(wait_until: 1.seconds.from_now)
+    Emails.admin_new_user(self).deliver_later(wait_until: 2.seconds.from_now)
   end
 end

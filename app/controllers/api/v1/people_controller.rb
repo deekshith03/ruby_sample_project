@@ -21,8 +21,8 @@ module Api
         return unless user.save!
 
         Rails.logger.info "USER: User ##{user.id} validated email successfully."
-        Emails.welcome(user).deliver_later(wait_until: 2.seconds.from_now)
-        Emails.admin_user_validated(user).deliver_later(wait_until: 4.seconds.from_now)
+        Emails.welcome(user).deliver_later(wait_until: 1.seconds.from_now)
+        Emails.admin_user_validated(user).deliver_later(wait_until: 2.seconds.from_now)
       end
 
       private
