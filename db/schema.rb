@@ -10,8 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_13_094700) do
-# Could not dump table "people" because of following StandardError
-#   Unknown type 'bool' for column 'admin'
+ActiveRecord::Schema[7.0].define(version: 2023_05_13_155311) do
+  create_table "people", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.boolean "admin", default: false
+    t.string "slug"
+    t.boolean "validated"
+    t.string "handle"
+    t.integer "team"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

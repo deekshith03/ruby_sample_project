@@ -1,12 +1,16 @@
 module Api
   module V1
     class PeopleController < ApplicationController
+      def index
+        render :index
+      end
+
       def create
         person = Person.new(person_params)
         if person.save
-          redirect_to person, notice: 'Account added!'
+          redirect_to api_v1_people_path(person), notice: 'Account added!'
         else
-          render json: { messages: person.errors.full_messages }, status: :unprocessable_entity
+          render :new
         end
       end
 
@@ -17,8 +21,8 @@ module Api
         return unless user.save!
 
         Rails.logger.info "USER: User ##{user.id} validated email successfully."
-        Emails.admin_user_validated
-        Emails.welcome(user).deliver!
+        Emails.welcome(user).deliver_later(wait_until: 2.seconds.from_now)
+        Emails.admin_user_validated(user).deliver_later(wait_until: 4.seconds.from_now)
       end
 
       private

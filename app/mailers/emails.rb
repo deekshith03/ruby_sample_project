@@ -11,17 +11,17 @@ class Emails < ApplicationMailer
 
   def admin_user_validated(user)
     @user = user
-    mail to: admins.map(&:email)
+    mail to: admins.map(&:email) if admins.present?
   end
 
   def admin_new_user(user)
     @user = user
-    mail to: admins.map(&:email)
+    mail to: admins.map(&:email) if admins.present?
   end
 
   def admin_removing_unvalidated_users(users)
     @users = users
-    mail to: admins.map(&:email)
+    mail to: admins.map(&:email) if admins.present?
   end
 
   private

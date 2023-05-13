@@ -1,0 +1,20 @@
+
+<h1>Admin Notification: Removing Unvalidated Users</h1>
+
+<p>Dear Admin,</p>
+
+<p>The following unvalidated users have been removed from the platform:</p>
+
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      User: <%= user.first_name %>
+      Email: <%= user.email %>
+    </li>
+  <% end %>
+</ul>
+
+<p>Thank you for your attention.</p>
+
+<p>Sincerely,</p>
+<p>Your App Team</p>

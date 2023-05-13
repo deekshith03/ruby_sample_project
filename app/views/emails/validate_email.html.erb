@@ -1,0 +1,31 @@
+<h1>Email Validation</h1>
+
+<p>Dear <%= @person.first_name %>,</p>
+
+<p>Please click on the following link to validate your email address:</p>
+
+<a href="#" id="validate-email-link">Validate Email</a>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var validateEmailLink = document.getElementById('validate-email-link');
+    validateEmailLink.addEventListener('click', function(event) {
+      event.preventDefault();
+      var url = '<%= validate_email_api_v1_people_url(slug: @person.slug) %>';
+      fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }).then(function(response) {
+        if (response.ok) {
+          alert('Email validated successfully!');
+        } else {
+          alert('Failed to validate email.');
+        }
+      }).catch(function(error) {
+        console.error('An error occurred:', error);
+      });
+    });
+  });
+</script>
